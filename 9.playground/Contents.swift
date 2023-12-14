@@ -28,4 +28,9 @@ func sayHelloToFriends(me: String, friends: String...) -> String{
 }
 print(sayHelloToFriends(me: "Garam", friends: "River", "Ann", "Mac"))
 
+//MARK: -함수타입
+var someFunction: (String, String) -> Void = greeting(friend:me:)
+someFunction("Garam", "River")
 
+someFunction = greeting(friend:me:)
+someFunction("Garam", "River")
