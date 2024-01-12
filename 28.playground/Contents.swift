@@ -70,3 +70,50 @@ case is Person:
 default:
     print("james는 아무것도 아닙니다.")
 }
+
+//MARK: - 업캐스팅
+//universitystudent 인스턴스를 생성하여 person 행세를 할 수 있도록 업 캐스팅
+var mike: Person = UniversityStudent() as Person
+var jenny: Student = Student()
+var jina: Any = Person()
+
+//MARK: - 다운캐스팅
+var optionalCasted: Student?
+optionalCasted = mike as? UniversityStudent
+optionalCasted = jenny as? UniversityStudent
+optionalCasted = jina as? UniversityStudent
+optionalCasted = jina as? Student
+
+//MARK: - 강제 다운 캐스팅
+var forcedCasted: Student
+forcedCasted = mike as! UniversityStudent
+
+//활용
+func doSomethingWithSwitch(someone: Person) {
+    switch someone{
+    case is UniversityStudent:
+        (someone as! UniversityStudent).goToMt()
+    case is Student:
+        (someone as! UniversityStudent).goToSchool()
+    case is Person:
+        (someone as! Person).breath()
+    }
+}
+doSomethingWithSwitch(someone: mike as Perosn)
+doSomethingWithSwitch(someone: mike)
+doSomethingWithSwitch(someone: jenny)
+doSomethingWithSwitch(someone: river)
+func doSomething(someone: Person){
+    if let universityStudent = someone as? UniversityStudent {
+        universityStudent.goToMt()
+    }else if let student = someone as? Student {
+        student.goToSchool()
+    }else if let person = someone as? Person{
+        person.breath()
+    }
+}
+
+doSomething(someone: mike as Person)
+doSomething(someone: mike)
+doSomething(someone: jenny)
+doSomething(someone: river)
