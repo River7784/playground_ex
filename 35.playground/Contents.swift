@@ -86,3 +86,17 @@ do {
 do {
     result = try machine.vend(numberOfItems: 4)
 }
+
+//MARK: - try? try! catch
+
+//try?
+result = try? machine.vend(numberOfItems: 2)
+result // Optional("2개 제공함")
+result = try? machine.vend(numberOfItems: 2)
+result // nil
+
+//try!
+result = try! machine.vend(numberOfItems: 1)
+result // 1개 제공함
+//result = try! machine.vend(numberOfItems: 1)
+// 런타임 오류 발생
